@@ -9,8 +9,6 @@ Copyright (c) 2013 Tristan Strathearn (r3oath@gmail.com)
 
 Introducing Amnesia, a Layer 1 binary analysis system. Amnesia was designed for the initial analysis of unknown an EXE or DLL. It offers you the ability to view and search for strings, imports, exports, metadata, checksums and to even disassemble the code. This helpful for getting an overview of the file before diving in deeper with a debugger or a dynamic analysis framework.
 
-Available for download at: https://github.com/r3oath/Amnesia
-
 ![metadata](http://www.r3oath.com/wp-content/uploads/2013/08/metadata.jpg)
 
 I've designed the menu and interface to be as user friendly as possible and developed a built in tool similar to Less (on Linux) or More (on Windows) for dealing with large amounts of output. This makes it easy to scroll through the dump and even save it to file at any time if you wish to analyze it further outside of Amnesia.
