@@ -1,7 +1,7 @@
 # ////////////////////////////////////////////////////////////////////////////
 # ----------------------------------------------------------------------------
 #
-# Amnesia - Layer 1 subject analysis system.
+# Amnesia - Layer 1 binary analysis system.
 # Copyright (c) 2013 Tristan Strathearn (r3oath@gmail.com)
 # Website: www.r3oath.com
 #
