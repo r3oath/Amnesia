@@ -136,7 +136,7 @@ def loadSubject():
     ORIG_FILE = getInput('Please enter the file to process')
     try:
         SUBJECT = pefile.PE(ORIG_FILE)
-        print_('Loaded the subject "%s"' % ORIG_FILE)
+        print_('Loaded the binary "%s"' % ORIG_FILE)
     except:
         reportError('Cannot open the file "%s"' % ORIG_FILE)
         loadSubject()
@@ -244,7 +244,7 @@ def exports_dump_all():
                         (symbol.ordinal, symbol.forwarder))
         clog.interactiveOutput()
     except:
-        print_('Could not be processed (subject may not export)')
+        print_('Could not be processed (binary may not export anything)')
 
 def exports_search():
     try:
@@ -273,7 +273,7 @@ def exports_search():
                         (symbol.ordinal, symbol.forwarder))
         clog.interactiveOutput()
     except:
-        print_('Could not be processed (subject may not export)')
+        print_('Could not be processed (binary may not export anything)')
 
 def exports_build_vs_pragma_forwards():
     s_by_name = '#pragma comment(linker, "/export:%s=%s.%s")\n'
@@ -289,7 +289,7 @@ def exports_build_vs_pragma_forwards():
                     (symbol.ordinal, new_dll, symbol.ordinal, symbol.ordinal))
         clog.interactiveOutput()
     except:
-        print_('Could not be processed (subject may not export)')
+        print_('Could not be processed (binary may not export anything)')
 
 def __assembly_offset(offset):
     return '%08X' % offset
@@ -327,20 +327,20 @@ def assembly_disassemble():
 
 def metadata_subject_overview():
     if SUBJECT.is_exe() is True:
-        print_('Subject "%s" is an EXE' % ORIG_FILE)
+        print_('Binary "%s" is an EXE' % ORIG_FILE)
     if SUBJECT.is_dll() is True:
-        print_('Subject "%s" is a DLL' % ORIG_FILE)
+        print_('Binary "%s" is a DLL' % ORIG_FILE)
 
     flagged = False
     if peutils.is_probably_packed(SUBJECT) is True:
-        print_('Subject is possibly packed!')
+        print_('Binary is possibly packed!')
         flagged = True
     if peutils.is_suspicious(SUBJECT) is True:
-        print_('Subject is suspicious!')
+        print_('Binary is suspicious!')
         flagged = True
 
     if flagged is False:
-        print_('Subject appears to be normal')
+        print_('Binary appears to be normal')
 
     print_('Address of Entry Point: 0x%08x' %
         SUBJECT.OPTIONAL_HEADER.AddressOfEntryPoint)
@@ -384,12 +384,12 @@ menu_tree = [
         {'Option': 'Disassemble at OEP', 'Callback': assembly_disassemble},
     ]},
     {'Section': 'Metadata', 'Contents': [
-        {'Option': 'Subject Overview', 'Callback': metadata_subject_overview},
+        {'Option': 'Binary Overview', 'Callback': metadata_subject_overview},
     ]},
     {'Section': 'Misc', 'Contents': [
         {'Option': 'Verify Checksum', 'Callback': misc_verify_checksum},
         {'Option': 'Generate Checksum', 'Callback': misc_generate_checksum},
-        {'Option': 'Load new subject', 'Callback': loadSubject}
+        {'Option': 'Load new binary', 'Callback': loadSubject}
     ]},
 ]
 
